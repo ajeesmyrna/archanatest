@@ -48,11 +48,3 @@ jobs:
       - name: Terraform Apply
         if: github.ref == 'refs/heads/mainbkp' && github.event_name == 'push'
         run: terraform apply -auto-approve tfplan
-<<<<<<< HEAD
-      
-      - name: Terraform Destroy
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform destroy -auto-approve
-=======
-        
->>>>>>> 2d49bf6cbd5d7ecdcbe1b338e51df8a9eb8fef9d
