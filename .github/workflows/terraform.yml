@@ -1,4 +1,3 @@
-
 name: Terraform CI/CD Archanaprod
 
 on:
@@ -46,10 +45,12 @@ jobs:
       - name: Terraform Plan
         run: terraform plan -out=tfplan
 
+      - name: Show Terraform Plan
+        run: terraform show -json tfplan > plan.json
+
+      - name: Review Plan
+        run: cat plan.json
+
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve tfplan
-      
-    # - name: Terraform Destroy
-    #    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    #    run: terraform destroy -auto-approve
