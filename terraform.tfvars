@@ -1,2 +1,11 @@
-resource_group_name = "archanaprod031910pm"
-location            = "East US"
+resource_group_name = {
+  rg1 = {
+    name     = "archanaprod-rg1"
+  }
+  rg2 = {
+    name     = "archanaprod-rg2"
+  }
+}
+
+location = "East US"
+

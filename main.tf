@@ -1,6 +1,6 @@
 module "prodinframodule" {
 source = "./modules/prodinfra"
-resource_group_name = var.resource_group_name
+for_each = var.resource_group_name
+resource_group_name = each.value.name
 location            = var.location
 }
-#
