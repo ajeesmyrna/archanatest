@@ -3,10 +3,10 @@ name: Terraform CI/CD Archanaprod
 on:
   push:
     branches:
-      - mainbkp
+      - mainb
   pull_request:
     branches:
-      - mainbkp
+      - main
 
 permissions:
   contents: read
@@ -46,5 +46,5 @@ jobs:
         run: terraform plan -out=tfplan
 
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/mainbkp' && github.event_name == 'push'
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve tfplan
