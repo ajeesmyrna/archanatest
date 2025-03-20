@@ -1,2 +1,2 @@
-resource_group_name = "archanaprod03test"
+resource_group_name = "archanaprod031910pm"
 location            = "East US"
