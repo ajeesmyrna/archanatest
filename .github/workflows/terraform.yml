@@ -3,7 +3,7 @@ name: Terraform CI/CD Archanaprod
 on:
   push:
     branches:
-      - mainb
+      - main
   pull_request:
     branches:
       - main
