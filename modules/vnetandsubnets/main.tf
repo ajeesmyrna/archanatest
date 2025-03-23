@@ -7,7 +7,7 @@ resource "azurerm_resource_group" "vnet-rg" {
 resource "azurerm_virtual_network" "archanaprod-vnet" {
   name                = var.name
   location            = var.location
-  resource_group_name = var.resource_group_name
+  resource_group_name = "${var.resource_group_name}RG"
   address_space       = var.address_space
  # Ensure this depends on the resource group
   depends_on = [
