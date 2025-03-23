@@ -10,4 +10,13 @@ variable "resource_group_name" {
   }))
 }
 
+variable "address_space" {
+    description = "adress space for Vnet"
+    type        = list(string)
+}
+
+variable "name" {
+    description = "name of the vnet"
+    type        = string
+}
 
