@@ -10,4 +10,20 @@ variable "resource_group_name" {
   }))
 }
 
+variable "address_space" {
+    description = "adress space for Vnet"
+    type        = list(string)
+}
 
+variable "name" {
+    description = "name of the vnet"
+    type        = string
+}
+
+variable "subnets" {
+  description = "A map of subnets to create"
+  type = map(object({
+    name            = string
+    address_prefixes = list(string)
+  }))
+}
