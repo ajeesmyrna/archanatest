@@ -17,3 +17,12 @@ variable "location" {
     description = "resoruce group location"
     type        = string
 }
+
+variable "subnet_name" {
+    description = "resoruce group location"
+    type        = string
+}
+variable "subnet_address_prefixes" {
+    description = "adress space for Vnet"
+    type        = list(string)
+}

@@ -20,3 +20,10 @@ variable "name" {
     type        = string
 }
 
+variable "subnets" {
+  description = "A map of subnets to create"
+  type = map(object({
+    name            = string
+    address_prefixes = list(string)
+  }))
+}
