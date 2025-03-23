@@ -24,7 +24,7 @@ resource "azurerm_subnet" "subnets" {
 
   # Ensure this depends on the resource group
   depends_on = [
-    azurerm_resource_group.vnet-rg
+    azurerm_resource_group.vnet-rg,
     azurerm_virtual_network.archanaprod-vnet
   ]
   }
