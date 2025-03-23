@@ -1,9 +1,9 @@
 resource_group_name = {
-  rg1 = {
-    name     = "archanaprod-rg1"
+  prod = {
+    name     = "archanaprod-rg"
   }
-  rg2 = {
-    name     = "archanaprod-rg2"
+  nonprod = {
+    name     = "archananonprod-rg"
   }
 }
 
