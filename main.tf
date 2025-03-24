@@ -26,6 +26,7 @@ module "vm_prod" {
   create_public_ip    = false
 }
 
+/*
 module "archanaprod-vm2" {
   source              = "./modules/virtualmachine"
   vm_name             = "archanaprod-vm2"
@@ -37,7 +38,7 @@ module "archanaprod-vm2" {
   admin_password      = "P@ssw0rd123!"
   create_public_ip    = false
 }
-
+*/
 
 module "archananonprod-vm1" {
   source              = "./modules/virtualmachine"
