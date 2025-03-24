@@ -74,3 +74,19 @@ output "prod_vm_private_ip" {
   description = "The private IP address of the prod virtual machine"
   value       = module.vm_prod.vm_private_ip
 }
+
+# Outputs for the second VM
+output "prod_vm2_id" {
+  description = "The ID of the second prod virtual machine"
+  value       = module.archanaprod-vm2.vm_id
+}
+
+output "prod_vm2_name" {
+  description = "The name of the second prod virtual machine"
+  value       = module.archanaprod-vm2.vm_name
+}
+
+output "prod_vm2_private_ip" {
+  description = "The private IP address of the second prod virtual machine"
+  value       = module.archanaprod-vm2.vm_private_ip
+}
