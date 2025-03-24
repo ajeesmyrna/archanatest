@@ -26,6 +26,19 @@ module "vm_prod" {
   create_public_ip    = false
 }
 
+module "vm_prod" {
+  source              = "./modules/virtualmachine"
+  vm_name             = "archanaprod-vm2"
+  location            = module.resourcegrp["prod"].resource_group_location
+  resource_group_name = module.resourcegrp["prod"].resource_group_name
+  subnet_id           = module.vnetandsubnets.subnets["prod"]
+  vm_size             = "Standard_B2s"
+  admin_username      = "adminuser"
+  admin_password      = "P@ssw0rd123!"
+  create_public_ip    = false
+}
+
+
 /*module "vm_nonprod" {
   source              = "./modules/virtualmachine"
   vm_name             = "nonprod-vm"
