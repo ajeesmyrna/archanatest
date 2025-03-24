@@ -1,30 +1,18 @@
-# Create a resource group
-resource "azurerm_resource_group" "vnet-rg" {
-  name     = "${var.resource_group_name}RG"
-  location = var.location
-}
 
-resource "azurerm_virtual_network" "archanaprod-vnet" {
+# Create Virtual Network
+resource "azurerm_virtual_network" "vnet" {
   name                = var.name
   location            = var.location
-  resource_group_name = "${var.resource_group_name}RG"
+  resource_group_name = var.resource_group_name
   address_space       = var.address_space
- # Ensure this depends on the resource group
-  depends_on = [
-    azurerm_resource_group.vnet-rg
-  ]
-
 }
 
+# Create subnets
 resource "azurerm_subnet" "subnets" {
-  resource_group_name  = "${var.resource_group_name}RG"
-  virtual_network_name = azurerm_virtual_network.archanaprod-vnet.name
-  name                 = var.subnet_name
-  address_prefixes     = var.subnet_address_prefixes
+  for_each = var.subnets
 
-  # Ensure this depends on the resource group
-  depends_on = [
-    azurerm_resource_group.vnet-rg,
-    azurerm_virtual_network.archanaprod-vnet
-  ]
-  }
+  name                 = each.value.name
+  resource_group_name  = var.resource_group_name
+  virtual_network_name = azurerm_virtual_network.vnet.name
+  address_prefixes     = each.value.address_prefixes
+}

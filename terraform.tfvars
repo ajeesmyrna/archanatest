@@ -1,23 +1,32 @@
 resource_group_name = {
   prod = {
-    name     = "archanaprod-rg"
+    name = "prod-rg"
   }
   nonprod = {
-    name     = "archananonprod-rg"
+    name = "nonprod-rg"
+  }
+  vnet = {
+    name = "vnet-rg"
   }
 }
 
 location = "East US"
-address_space = ["10.10.0.0/16"]
-name      = "archanavnet"
+
+vnet_name = "archanaprod-vnet"
+
+address_space = ["10.30.0.0/16"]
 
 subnets = {
-  prodsubnet = {
-    name     = "archanaprod-subnet"
-    address_prefixes = ["10.10.10.0/24"]
+  prod = {
+    name            = "prod"
+    address_prefixes = ["10.30.10.0/24"]
   }
-  nonprodsubnet = {
-    name     = "archananonprod-subnet"
-    address_prefixes = ["10.10.20.0/24"]
+  nonprod = {
+    name            = "nonprod"
+    address_prefixes = ["10.30.20.0/24"]
+  }
+  test = {
+    name            = "test"
+    address_prefixes = ["10.30.30.0/24"]
   }
 }
