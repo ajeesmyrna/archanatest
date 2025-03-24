@@ -27,3 +27,32 @@ variable "subnets" {
     address_prefixes = list(string)
   }))
 }
+
+variable "admin_username" {
+  description = "The admin username for the VMs"
+  type        = string
+  default     = "adminuser"
+}
+
+variable "admin_password" {
+  description = "The admin password for the VMs"
+  type        = string
+  default     = "P@ssw0rd123!"
+}
+variable "vm_name" {
+  description = "The admin username for the VMs"
+  type        = string
+  default     = "archanaprod-vm"
+}
+
+variable "vm_size" {
+  description = "The admin username for the VMs"
+  type        = string
+  default     = "Standard_B2s"
+}
+
+variable "create_public_ip" {
+  description = "Whether to create a public IP for the virtual machine"
+  type        = bool
+  default     = false
+}

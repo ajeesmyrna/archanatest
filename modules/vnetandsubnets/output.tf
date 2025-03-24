@@ -31,3 +31,11 @@ output "subnet_address_prefixes" {
     for subnet in azurerm_subnet.subnets : subnet.address_prefixes
   ]
 }
+
+output "subnets" {
+  description = "A map of subnet IDs"
+  value = {
+    for key, subnet in azurerm_subnet.subnets :
+    key => subnet.id
+  }
+}

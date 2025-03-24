@@ -53,3 +53,24 @@ output "subnet_address_prefixes" {
   description = "The address prefixes of the subnets"
   value       = module.vnetandsubnets.subnet_address_prefixes
 }
+
+output "subnet_id" {
+  description = "The address prefixes of the subnets"
+  value       = module.vnetandsubnets.subnets
+}
+
+# Outputs from the virtualmachine module for prod
+output "prod_vm_id" {
+  description = "The ID of the prod virtual machine"
+  value       = module.vm_prod.vm_id
+}
+
+output "prod_vm_name" {
+  description = "The name of the prod virtual machine"
+  value       = module.vm_prod.vm_name
+}
+
+output "prod_vm_private_ip" {
+  description = "The private IP address of the prod virtual machine"
+  value       = module.vm_prod.vm_private_ip
+}
