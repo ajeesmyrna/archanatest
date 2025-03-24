@@ -26,7 +26,7 @@ module "vm_prod" {
   create_public_ip    = false
 }
 
-module "vm_prod" {
+module "archanaprod-vm2" {
   source              = "./modules/virtualmachine"
   vm_name             = "archanaprod-vm2"
   location            = module.resourcegrp["prod"].resource_group_location
