@@ -76,17 +76,17 @@ output "prod_vm_private_ip" {
 }
 
 # Outputs for the second VM
-output "prod_vm2_id" {
+output "archananonprod_vm1_id" {
   description = "The ID of the second prod virtual machine"
   value       = module.archananonprod-vm1.vm_id
 }
 
-output "prod_vm2_name" {
+output "archananonprod_vm1_name" {
   description = "The name of the second prod virtual machine"
   value       = module.archananonprod-vm1.vm_name
 }
 
-output "prod_vm2_private_ip" {
+output "parchananonprod_vm1_private_ip" {
   description = "The private IP address of the second prod virtual machine"
   value       = module.archananonprod-vm1.vm_private_ip
 }

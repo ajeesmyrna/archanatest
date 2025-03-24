@@ -14,9 +14,9 @@ module "vnetandsubnets" {
   subnets             = var.subnets
 }
 
-module "vm_prod" {
+module "archanaprod-vm1" {
   source              = "./modules/virtualmachine"
-  vm_name             = "archanaprod-vm"
+  vm_name             = "archanaprod-vm1"
   location            = module.resourcegrp["prod"].resource_group_location
   resource_group_name = module.resourcegrp["prod"].resource_group_name
   subnet_id           = module.vnetandsubnets.subnets["prod"]
