@@ -62,17 +62,17 @@ output "subnet_id" {
 # Outputs from the virtualmachine module for prod
 output "prod_vm_id" {
   description = "The ID of the prod virtual machine"
-  value       = module.vm_prod.vm_id
+  value       = module.archanaprod-vm1.vm_id
 }
 
 output "prod_vm_name" {
   description = "The name of the prod virtual machine"
-  value       = module.vm_prod.vm_name
+  value       = module.archanaprod-vm1.vm_name
 }
 
 output "prod_vm_private_ip" {
   description = "The private IP address of the prod virtual machine"
-  value       = module.vm_prod.vm_private_ip
+  value       = module.archanaprod-vm1.vm_private_ip
 }
 
 # Outputs for the second VM
