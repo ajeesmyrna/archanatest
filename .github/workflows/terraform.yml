@@ -30,6 +30,12 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+      
+      - name: Configure Git credentials
+        run: |
+          git config --global url."https://$PAT_TOKEN@github.com/".insteadOf "https://github.com/"
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
@@ -49,6 +55,6 @@ jobs:
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve tfplan
       
-     # - name: Terraform Destroy
-     #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-     #   run: terraform destroy -auto-approve
+      - name: Terraform Destroy
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: terraform destroy -auto-approve
