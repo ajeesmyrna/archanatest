@@ -1,12 +1,14 @@
 module "resourcegrp" {
-  source              = "./modules/resourcegrp"
+  #source             = "./modules/resourcegrp"
+  source              = "git::https://github.com/ajeesmyrna/archanaprod.git//modules/resourcegrp?ref=mainmarch24"
   for_each            = var.resource_group_name
   resource_group_name = each.value.name
   location            = var.location
 }
 
 module "vnetandsubnets" {
-  source              = "./modules/vnetandsubnets"
+  #source              = "./modules/vnetandsubnets"
+  source              = "git::https://github.com/ajeesmyrna/archanaprod.git//modules/vnetandsubnets?ref=mainmarch24"
   name                = var.vnet_name
   location            = module.resourcegrp["vnet"].resource_group_location
   resource_group_name = module.resourcegrp["vnet"].resource_group_name
@@ -15,7 +17,8 @@ module "vnetandsubnets" {
 }
 
 module "archanaprod-vm1" {
-  source              = "./modules/virtualmachine"
+  #source              = "./modules/virtualmachine"
+  source              = "git::https://github.com/ajeesmyrna/archanaprod.git//modules/virtualmachine?ref=mainmarch24"
   vm_name             = "archanaprod-vm1"
   location            = module.resourcegrp["prod"].resource_group_location
   resource_group_name = module.resourcegrp["prod"].resource_group_name
@@ -28,7 +31,8 @@ module "archanaprod-vm1" {
 
 /*
 module "archanaprod-vm2" {
-  source              = "./modules/virtualmachine"
+  #source              = "./modules/virtualmachine"
+  source              = "git::https://github.com/ajeesmyrna/archanaprod.git//modules/virtualmachine?ref=mainmarch24"
   vm_name             = "archanaprod-vm2"
   location            = module.resourcegrp["prod"].resource_group_location
   resource_group_name = module.resourcegrp["prod"].resource_group_name
@@ -41,7 +45,8 @@ module "archanaprod-vm2" {
 */
 
 module "archananonprod-vm1" {
-  source              = "./modules/virtualmachine"
+  #source              = "./modules/virtualmachine"
+  source              = "git::https://github.com/ajeesmyrna/archanaprod.git//modules/virtualmachine?ref=mainmarch24"
   vm_name             = "archananonprod-vm1"
   location            = module.resourcegrp["nonprod"].resource_group_location
   resource_group_name = module.resourcegrp["nonprod"].resource_group_name
