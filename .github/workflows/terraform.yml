@@ -35,7 +35,7 @@ jobs:
         run: |
           git config --global url."https://$PAT_TOKEN@github.com/".insteadOf "https://github.com/"
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
