@@ -46,14 +46,7 @@ variable "create_public_ip" {
   default     = false
 }
 
-variable "admin_username" {
-  description = "The admin username for the VMs"
+variable "key_vault_id" {
+  description = "The Resource ID of the Azure Key Vault"
   type        = string
-  default     = "adminuser"
-}
-
-variable "admin_password" {
-  description = "The admin password for the VMs"
-  type        = string
-  default     = "P@ssw0rd123!"
 }

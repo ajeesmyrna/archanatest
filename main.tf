@@ -15,6 +15,18 @@ module "vnetandsubnets" {
   subnets             = var.subnets
 }
 
+# Access the admin username from Key Vault
+data "azurerm_key_vault_secret" "admin_username" {
+  name         = "vmusername" # Replace with your secret name
+  key_vault_id = var.key_vault_id # Key Vault resource ID
+}
+
+# Access the admin password from Key Vault
+data "azurerm_key_vault_secret" "admin_password" {
+  name         = "vmpassword" # Replace with your secret name
+  key_vault_id = var.key_vault_id # Key Vault resource ID
+}
+
 module "virtualmachine" {
   for_each            = var.vm
   #source              = "./modules/virtualmachine"
@@ -24,7 +36,7 @@ module "virtualmachine" {
   resource_group_name = module.resourcegrp.resource_group_name_out[each.value.resource_group_name]
   subnet_id           = module.vnetandsubnets.subnets_out[each.value.subnet_id]
   vm_size             = each.value.vm_size
-  admin_username      = var.admin_username
-  admin_password      = var.admin_password
+  admin_username      = data.azurerm_key_vault_secret.admin_username.value
+  admin_password      = data.azurerm_key_vault_secret.admin_password.value
   create_public_ip    = var.create_public_ip
 }

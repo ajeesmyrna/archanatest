@@ -22,6 +22,7 @@ location = "East US"
 vnet_name = "vnet"
 
 address_space = ["10.30.0.0/16"]
+key_vault_id  = "/subscriptions/4920f847-879e-432c-9a7a-eef3f3296c50/resourceGroups/terraformrgmarch2025/providers/Microsoft.KeyVault/vaults/ajeearchanakv"
 
 subnets = {
   nonproduction_subnet = {
