@@ -1,12 +1,13 @@
 module "resourcegrp" {
-  source             = "./modules/resourcegrp"
-  #source              = "git::https://github.com/ajeesmyrna/archanaprod.git//modules/resourcegrp?ref=main"
+  #source             = "./modules/resourcegrp"
+  source              = "git::https://github.com/ajeesmyrna/archanatest.git//modules/resourcegrp?ref=main"
   resource_group_name = var.resource_group_name
   location            = var.location
 }
 
 module "vnetandsubnets" {
-  source              = "./modules/vnetandsubnets"
+  #source              = "./modules/vnetandsubnets"
+  source              = "git::https://github.com/ajeesmyrna/archanatest.git//modules/vnetandsubnets?ref=main"
   name                = var.vnet_name
   location            = module.resourcegrp.resource_group_location_out["vnet-rg"]
   resource_group_name = module.resourcegrp.resource_group_name_out["vnet-rg"]
@@ -16,8 +17,8 @@ module "vnetandsubnets" {
 
 module "virtualmachine" {
   for_each            = var.vm
-  source              = "./modules/virtualmachine"
-  #source             = "git::https://github.com/ajeesmyrna/archanaprod.git//modules/virtualmachine?ref=main"
+  #source              = "./modules/virtualmachine"
+  source             = "git::https://github.com/ajeesmyrna/archanatest.git//modules/virtualmachine?ref=main"
   vm_name             = each.value.vm_name
   location            = module.resourcegrp.resource_group_location_out["vnet-rg"]
   resource_group_name = module.resourcegrp.resource_group_name_out[each.value.resource_group_name]
