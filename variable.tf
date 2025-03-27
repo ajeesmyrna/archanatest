@@ -1,14 +1,16 @@
 variable "resource_group_name" {
-  description = "Map of resource groups with their names and locations"
+  description = "Map of resource groups name and location"
   type        = map(object({
-    name = string
+    name     = string
   }))
 }
+
 
 variable "location" {
   description = "The location of the resources"
   type        = string
 }
+
 
 variable "vnet_name" {
   description = "The name of the virtual network"
@@ -28,6 +30,22 @@ variable "subnets" {
   }))
 }
 
+variable "vm" {
+  description = "A map of subnets to create"
+  type = map(object({
+    vm_name            = string
+    subnet_id          = string
+    resource_group_name = string
+    vm_size            = string
+  }))
+}
+
+variable "create_public_ip" {
+  description = "Whether to create a public IP for the virtual machine"
+  type        = bool
+  default     = false
+}
+
 variable "admin_username" {
   description = "The admin username for the VMs"
   type        = string
@@ -38,21 +56,4 @@ variable "admin_password" {
   description = "The admin password for the VMs"
   type        = string
   default     = "P@ssw0rd123!"
-}
-variable "vm_name" {
-  description = "The admin username for the VMs"
-  type        = string
-  default     = "archanaprod-vm"
-}
-
-variable "vm_size" {
-  description = "The admin username for the VMs"
-  type        = string
-  default     = "Standard_B2s"
-}
-
-variable "create_public_ip" {
-  description = "Whether to create a public IP for the virtual machine"
-  type        = bool
-  default     = false
 }

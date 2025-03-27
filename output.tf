@@ -1,92 +1,70 @@
 # Outputs from the resourcegrp module
-output "resource_group_name_prod" {
+output "resource_group_name" {
   description = "The name of the prod resource group"
-  value       = module.resourcegrp["prod"].resource_group_name
+  value       = module.resourcegrp.resource_group_name_out
 }
 
-output "resource_group_location_prod" {
+output "resource_group_location" {
   description = "The location of the prod resource group"
-  value       = module.resourcegrp["prod"].resource_group_location
+  value       = module.resourcegrp.resource_group_location_out
 }
 
-output "resource_group_name_nonprod" {
-  description = "The name of the nonprod resource group"
-  value       = module.resourcegrp["nonprod"].resource_group_name
-}
-
-output "resource_group_location_nonprod" {
-  description = "The location of the nonprod resource group"
-  value       = module.resourcegrp["nonprod"].resource_group_location
-}
-
-output "resource_group_name_vnet" {
-  description = "The name of the nonprod resource group"
-  value       = module.resourcegrp["vnet"].resource_group_name
-}
-
-output "resource_group_location_vnet" {
-  description = "The location of the nonprod resource group"
-  value       = module.resourcegrp["nonprod"].resource_group_location
-}
 # Outputs from the vnetandsubnets module
 output "vnet_name" {
   description = "The name of the virtual network"
-  value       = module.vnetandsubnets.vnet_name
+  value       = module.vnetandsubnets.vnet_name_out
 }
 
 output "vnet_address_space" {
   description = "The address space of the virtual network"
-  value       = module.vnetandsubnets.vnet_address_space
+  value       = module.vnetandsubnets.vnet_address_space_out
+}
+
+output "vnet_resource_id" {
+  description = "The resource group name for the virtual network"
+  value       = module.vnetandsubnets.vnet_id_out
 }
 
 output "vnet_resource_group" {
   description = "The resource group name for the virtual network"
-  value       = module.vnetandsubnets.resource_group_name
+  value       = module.vnetandsubnets.resource_group_name_out
 }
 
 output "subnet_names" {
   description = "The names of the subnets"
-  value       = module.vnetandsubnets.subnet_names
+  value       = module.vnetandsubnets.subnet_names_out
 }
 
 output "subnet_address_prefixes" {
   description = "The address prefixes of the subnets"
-  value       = module.vnetandsubnets.subnet_address_prefixes
+  value       = module.vnetandsubnets.subnet_address_prefixes_out
 }
 
 output "subnet_id" {
   description = "The address prefixes of the subnets"
-  value       = module.vnetandsubnets.subnets
+  value       = module.vnetandsubnets.subnets_out
 }
 
-# Outputs from the virtualmachine module for prod
-output "prod_vm_id" {
-  description = "The ID of the prod virtual machine"
-  value       = module.archanaprod-vm1.vm_id
+output "vm_names" {
+  description = "The names of the virtual machines"
+  value = {
+    for key, vm in module.virtualmachine :
+    key => vm.vm_name_out
+  }
 }
 
-output "prod_vm_name" {
-  description = "The name of the prod virtual machine"
-  value       = module.archanaprod-vm1.vm_name
+output "vm_ids" {
+  description = "The IDs of the virtual machines"
+  value = {
+    for key, vm in module.virtualmachine :
+    key => vm.vm_id_out
+  }
 }
 
-output "prod_vm_private_ip" {
-  description = "The private IP address of the prod virtual machine"
-  value       = module.archanaprod-vm1.vm_private_ip
-}
-
-# Outputs for the second VM
-output "archananonprod_vm1_id" {
-  description = "The ID of the second prod virtual machine"
-  value       = module.archananonprod-vm1.vm_id
-}
-
-output "archananonprod_vm1_name" {
-  description = "The name of the second prod virtual machine"
-  value       = module.archananonprod-vm1.vm_name
-}
-
-output "parchananonprod_vm1_private_ip" {
-  description = "The private IP address of the second prod virtual machine"
-  value       = module.archananonprod-vm1.vm_private_ip
+output "vm_private_ips" {
+  description = "The private IP addresses of the virtual machines"
+  value = {
+    for key, vm in module.virtualmachine :
+    key => vm.vm_private_ip_out
+  }
 }
