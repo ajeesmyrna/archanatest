@@ -11,6 +11,10 @@ resource_group_name = {
     name = "test-rg"
     location = "East US"
   }
+    new-rg = {
+    name = "new-rg"
+    location = "East US"
+  }
 }
 
 location = "East US"
@@ -27,6 +31,10 @@ subnets = {
   test_subnet = {
     name            = "test_subnet"
     address_prefixes = ["10.30.20.0/24"]
+  }
+    new_subnet = {
+    name            = "new_subnet"
+    address_prefixes = ["10.30.30.0/24"]
   }
 }
 
