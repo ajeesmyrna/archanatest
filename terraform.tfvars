@@ -38,6 +38,7 @@ subnets = {
   }
 }
 
+#virtual machine variables
 vm = {
   nonproduction_vm = {
     vm_name   = "nonproductionvm1"
