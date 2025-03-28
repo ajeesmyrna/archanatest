@@ -1,12 +1,18 @@
 #!/bin/bash
-# Validate that no resource deletions are present in the Terraform plan
+set -e
 
+# Generate the Terraform plan
 terraform plan -out=tfplan.binary
-terraform show -json tfplan.binary | jq -e '.resource_changes[]? | select(.change.actions | index("delete"))' > deletions.json
 
-if [ -s deletions.json ]; then
-  echo "Error: Resource deletions detected in the Terraform plan. Deletion is not allowed."
-  exit 1
+# Check for deletions in the plan
+if terraform show -json tfplan.binary | jq -e '.resource_changes[]? | select(.change.actions | index("delete"))' > deletions.json; then
+  if [ -s deletions.json ]; then
+    echo "Error: Resource deletions detected in the Terraform plan. Deletion is not allowed."
+    exit 1
+  else
+    echo "No resource deletions detected. Proceeding..."
+  fi
 else
-  echo "No resource deletions detected. Proceeding..."
+  echo "Error: Failed to parse Terraform plan JSON."
+  exit 1
 fi
