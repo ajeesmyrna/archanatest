@@ -19,6 +19,12 @@ if [ ! -s plan.json ]; then
   exit 1
 fi
 
+# Check if the JSON contains resource changes
+if ! jq -e '.resource_changes | length > 0' plan.json > /dev/null; then
+  echo "No resource changes detected. Proceeding..."
+  exit 0
+fi
+
 # Check for deletions in the plan
 if jq -e '.resource_changes[]? | select(.change.actions | index("delete"))' plan.json > deletions.json; then
   if [ -s deletions.json ]; then
