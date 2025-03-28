@@ -50,3 +50,4 @@ variable "key_vault_id" {
   description = "The Resource ID of the Azure Key Vault"
   type        = string
 }
+#
