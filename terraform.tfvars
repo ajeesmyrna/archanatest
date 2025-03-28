@@ -11,10 +11,10 @@ resource_group_name = {
     name = "test-rg"
     location = "East US"
   }
-    new-rg = {
-    name = "new-rg"
-    location = "East US"
-  }
+  #  new-rg = {
+  #  name = "new-rg"
+  #  location = "East US"
+  #}
 }
 
 location = "East US"

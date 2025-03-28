@@ -42,11 +42,17 @@ jobs:
         with:
           terraform_version: 1.5.0
 
+      - name: Install jq (JSON processor)
+        run: sudo apt-get install -y jq
+
       - name: Terraform Init
         run: terraform init
 
-      - name: Terraform Validate
-        run: terraform validate
+      - name: Run validation script
+        run: ./scripts/validate_no_deletion.sh
+
+      #- name: Terraform Validate
+      #  run: terraform validate
 
       - name: Terraform Plan
         run: terraform plan -out=tfplan
