@@ -31,23 +31,46 @@ variable "subnets" {
 }
 
 variable "vm" {
-  description = "A map of subnets to create"
+  description = "A map of vm to create"
   type = map(object({
     vm_name            = string
     subnet_id          = string
     resource_group_name = string
     vm_size            = string
+    create_public_ip   = bool
   }))
-}
-
-variable "create_public_ip" {
-  description = "Whether to create a public IP for the virtual machine"
-  type        = bool
-  default     = false
 }
 
 variable "key_vault_id" {
   description = "The Resource ID of the Azure Key Vault"
   type        = string
 }
-#
+
+#variables for Network security group
+
+variable "nsgname" {
+  description = "The Resource ID of the Azure Key Vault"
+  type        = string
+}
+
+variable "rulename" {
+  description = "The Resource ID of the Azure Key Vault"
+  type        = string
+}
+
+variable "priority" {
+  description = "The Resource ID of the Azure Key Vault"
+  type        = number
+}
+
+variable "access" {
+  description = "The Resource ID of the Azure Key Vault"
+  type        = string
+}
+
+variable "address_prefixes" {
+  description = "The Resource ID of the Azure Key Vault"
+  type        = string
+}
+
+

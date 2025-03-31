@@ -11,10 +11,6 @@ resource_group_name = {
     name = "test-rg"
     location = "East US"
   }
-    new-rg = {
-    name = "new-rg"
-    location = "East US"
-  }
 }
 
 location = "East US"
@@ -33,10 +29,6 @@ subnets = {
     name            = "test_subnet"
     address_prefixes = ["10.30.20.0/24"]
   }
-    new_subnet = {
-    name            = "new_subnet"
-    address_prefixes = ["10.30.30.0/24"]
-  }
 }
 
 #virtual machine variables
@@ -46,11 +38,21 @@ vm = {
     vm_size   = "Standard_B2s"
     subnet_id = "nonproduction_subnet" # Use the key, not the dynamic reference
     resource_group_name = "nonprod-rg"
+    create_public_ip  = "true"
   }
   test_vm = {
     vm_name      = "testvm1"
     vm_size   = "Standard_B1s"
     subnet_id = "test_subnet" # Use the key, not the dynamic reference
     resource_group_name = "test-rg"
+    create_public_ip  = "false"
   }
 }
+
+#tfvars entry for network security group
+
+nsgname       = "nsgssh"
+rulename      = "nsgrule"
+priority      = 100
+access        = "Allow"
+address_prefixes = "10.30.20.0/24"

@@ -68,3 +68,11 @@ output "vm_private_ips" {
     key => vm.vm_private_ip_out
   }
 }
+
+output "vm_public_ips" {
+  description = "The public IP addresses of the virtual machines"
+  value = {
+    for key, vm in module.virtualmachine :
+    key => vm.vm_public_ip_out
+  }
+}
